@@ -1,18 +1,17 @@
 <script>
-	import { Tasks } from "../api/tasks.js";
+  import { Meteor } from 'meteor/meteor'
+	import { Tasks } from "../api/tasks.js"
 
-	export let key;
-	export let task;
+	export let key
+	export let task
 
 	function toggleChecked() {
-		Tasks.update(task._id, {
-			$set: { checked: !task.checked }
-		});
-	};
+    Meteor.call('tasks.setChecked', task._id, !task.checked)
+	}
 
 	function deleteThisTask() {
-    Tasks.remove(task._id);
-	};
+    Meteor.call('tasks.remove', task._id)
+	}
 </script>
  
 <li class:checked="{task.checked}">

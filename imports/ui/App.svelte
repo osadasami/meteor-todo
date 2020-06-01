@@ -24,12 +24,7 @@
 	}
 
 	function handleSubmit(event) {
-		Tasks.insert({
-			text: newTask,
-			createdAt: new Date(),
-			owner: Meteor.userId(),
-			username: Meteor.user().username
-		})
+		Meteor.call('tasks.insert', newTask)
 
 		newTask = ''
 	}
