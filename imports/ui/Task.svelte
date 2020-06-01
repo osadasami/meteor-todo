@@ -27,5 +27,8 @@
     on:click={toggleChecked}
   />
  
-  <span class="text">{ task.text }</span>
+  <span class="text">
+    <strong>{task.username}</strong>
+    : { task.text }
+  </span>
 </li>
