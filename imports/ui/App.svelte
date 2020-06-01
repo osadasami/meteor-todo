@@ -2,8 +2,13 @@
 	import { Meteor } from "meteor/meteor"
 	import { useTracker } from 'meteor/rdb:svelte-meteor-data'
 	import { BlazeTemplate } from 'meteor/svelte:blaze-integration'
+	import { onMount } from 'svelte'
 	import Task from './Task.svelte'
 	import { Tasks } from '../api/tasks.js'
+
+	onMount(async () => {
+		Meteor.subscribe('tasks')
+	})
 
 	let newTask = ''
 	let hideCompleted = false
